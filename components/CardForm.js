@@ -29,7 +29,7 @@ const CardForm = ({ cardNumber, setCardNumber, cardHolder, setCardHolder, expiry
       />
       <View style={styles.row}>
         <Input
-          placeholder="วัน"
+          placeholder="วันหมดอายุ"
           placeholderTextColor="#A0A0A0"
           maxLength={5}
           keyboardType="numeric"
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
     marginBottom: -10, // ลดช่องว่างระหว่างฟิลด์
   },
   inputBox: {
-    backgroundColor: "#F0F7FF", // สีฟ้าอ่อน
+    backgroundColor: "#FFFFFF", // สีฟ้าอ่อน
     borderWidth: 1,
-    borderColor: "#A0A0A0", // สีเทา
+    borderColor: "#F1EEF8", // สีเทา
     borderRadius: 10,
     paddingHorizontal: 10,
     height: 50, // กำหนดความสูงให้ดูดี

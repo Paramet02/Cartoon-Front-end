@@ -27,15 +27,31 @@ const AddCardScreen = () => {
           containerStyle={styles.header}
           leftComponent={
             <View style={styles.headerLeftComponent}>
-              <Icon
-                raised
-                name="left"
-                type="antdesign"
-                size={18}
-                color="#000"
-                onPress={() => console.log('Back')}
-              />
-              <Text style={styles.headerText}>Add Card</Text>
+              {/* ปุ่มย้อนกลับ */}
+              <TouchableOpacity
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: "#f5f5f5",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Icon name="left" type='antdesign' size={20} color="#555" />
+              </TouchableOpacity>
+
+              {/* ข้อความ Add Product */}
+              <Text
+                style={{
+                  marginLeft: 10,
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  color: "#333",
+                }}
+              >
+                Add Product
+              </Text>
             </View>
           }
         />
@@ -67,7 +83,7 @@ const styles = StyleSheet.create({
   },
   inner: {
     flex: 1,
-    padding: 20
+    padding: 20,
   },
   footer: {
     padding: 30,
@@ -79,7 +95,7 @@ const styles = StyleSheet.create({
     borderRadius: 55,
     alignItems: "center",
     width: "100%",
-    height : 50
+    height: 50,
   },
   buttonText: {
     color: "#fff",
@@ -93,7 +109,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    width : 200
+    width: 200,
+    paddingTop : 15
   },
   headerText: {
     fontSize: 18,
