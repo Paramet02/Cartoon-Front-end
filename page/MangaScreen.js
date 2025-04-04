@@ -1,29 +1,22 @@
 import React, { useState } from "react";
-import {
-  View,
-  KeyboardAvoidingView,
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-} from "react-native";
-import CardPreview from "../components/CardPreview";
-import CardForm from "../components/CardForm";
-import { Header, Icon } from "@rneui/themed";
+import { View, StyleSheet , TouchableOpacity } from "react-native";
+import ImagePicker from "../components/ImagePicker";
+import MangaForm from "../components/MangaForm";
+import { Input, Button, Header , Icon , Text } from "@rneui/themed";
 
-const AddCardScreen = () => {
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardHolder, setCardHolder] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
-  const [cvv, setCvv] = useState("");
+const MangaScreen = () => {
+  const [images, setImages] = useState([
+    { file : require("../assets/pic/cover_manga.png") },
+    { file : require("../assets/pic/manga1.png") },
+  ]);
+
+  const handleAddImage = () => {
+    console.log("เพิ่มรูปภาพ");
+  };
 
   return (
     <View style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.inner}
-      >
-        <Header
+      <Header
           containerStyle={styles.header}
           leftComponent={
             <View style={styles.headerLeftComponent}>
@@ -55,22 +48,11 @@ const AddCardScreen = () => {
             </View>
           }
         />
-        <CardPreview cardNumber={cardNumber} expiryDate={expiryDate} />
-        <CardForm
-          cardNumber={cardNumber}
-          setCardNumber={setCardNumber}
-          cardHolder={cardHolder}
-          setCardHolder={setCardHolder}
-          expiryDate={expiryDate}
-          setExpiryDate={setExpiryDate}
-          cvv={cvv}
-          setCvv={setCvv}
-        />
-      </KeyboardAvoidingView>
+        <ImagePicker images={images} onAddImage={handleAddImage} />
+        <MangaForm />
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>บันทึก</Text>
-        </TouchableOpacity>
+        {/* ส่วนท้ายที่คุณอาจจะต้องการเพิ่ม */}
+        <Button title="บันทึก" onPress={() => console.log("บันทึกข้อมูล")} buttonStyle={styles.button} />
       </View>
     </View>
   );
@@ -79,14 +61,15 @@ const AddCardScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     backgroundColor: "#fff",
   },
-  inner: {
-    flex: 1,
-    padding: 20,
+  main: {
+    flex: 2, // ส่วนกลางจะใช้พื้นที่ 2/3
+    alignItems: "center",
   },
   footer: {
-    padding: 30,
+    flex: 1, // ส่วนท้ายยังไม่มีเนื้อหาหรือสามารถปรับให้เป็น 0 ได้
     justifyContent: "flex-end",
   },
   button: {
@@ -97,27 +80,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 50,
   },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
   header: {
     backgroundColor: "#fff",
     borderBottomWidth: 0,
+    height: 60, // กำหนดความสูงที่ต้องการ (ค่าดีฟอลต์คือประมาณ 70)
   },
   headerLeftComponent: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    width: 200,
-    paddingTop : 15
-  },
-  headerText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginLeft: 20,
-    color: "#000",
+    width: 100,
   },
 });
 
-export default AddCardScreen;
+export default MangaScreen;

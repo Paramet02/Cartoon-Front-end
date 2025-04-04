@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: 50, // กำหนดความสูงให้ดูดี
   },
   inputText: {
-    fontSize: 18, // ขนาดตัวอักษรใหญ่ขึ้น
+    fontSize: 14, // ขนาดตัวอักษรใหญ่ขึ้น
     color: "#000", // สีดำ
   },
   row: {
